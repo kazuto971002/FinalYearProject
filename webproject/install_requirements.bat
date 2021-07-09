@@ -1,0 +1,12 @@
+pip install django
+pip install openpyxl
+pip install wfastcgi
+pip install cmake
+pip install dlib
+pip install opencv-python
+pip install face_recognition
+pip install scikit-learn
+pip install cachetools
+pip install tdqm
+pip install numpy
+pip install bcrypt

@@ -1,0 +1,55 @@
+{% extends "layout/base.html" %}
+{% block main_content %}
+    {% load static %}
+    <!-- page title area end -->
+    <div class="main-content-inner">
+        <div class="row">
+            <div class="col-lg-10 col-ml-12">
+                <div class="row">
+                    <!-- Textual inputs start -->
+                    <div class="col-12 mt-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="header-title">Delete Confirmation</h4>
+                                {% if messages %}
+                                    <div class="span12">
+                                        {% for message in messages %}
+                                            <div class="alert alert-danger">
+                                                {{ message|safe }}
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    <div class="span12">
+                                        <div class="alert alert-success">
+                                            <label  class="col-form-label">Please enter your password to proceed.</label>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                <br/>
+                                <form method="post" action="/del_user/">
+                                     {% csrf_token %}
+                                    <div class="form-group">
+                                        <label for="inputPassword" class="">Password</label>
+                                        <input type="password" class="form-control" id="inputPassword" name="password"
+                                               required>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Textual inputs end -->
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- main content area end -->
+{% endblock %}
+{% block js_content %}
+    <script src="{% static  'assets/js/vendor/jquery-2.2.4.min.js' %}"></script>
+{% endblock %}

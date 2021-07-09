@@ -1,0 +1,48 @@
+{% extends "layout/base.html" %}
+{% block main_content %}
+    {% load static %}
+    <div class="main-content-inner">
+        <div class="row">
+            <div class="col-12 mt-5">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="header-title">View Person</h4>
+                        {% if messages %}
+                            <div class="span12">
+                                {% for message in messages %}
+                                    <div class="alert alert-success">
+                                        {{ message|safe }}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                        <div class="data-tables datatable-dark">
+                            <table id="dataTable3" class="text-center">
+                                <thead class="text-capitalize">
+                                <tr>
+                                    <th>Person Name</th>
+                                    <th>No. Photos</th>
+                                    <th>Delete Person</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for person in persons %}
+                                    <tr>
+                                        <td><a href="#">{{ person.name }}</a></td>
+                                        <td>{{ person.num_photos }}</td>
+                                        <td><a href="{% url 'del_person' person.id %}" >Delete</a></td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Dark table end -->
+        </div>
+    </div>
+{% endblock %}
+{% block js_content %}
+    <script src="{% static  'assets/js/vendor/jquery-2.2.4.min.js' %}"></script>
+{% endblock %}

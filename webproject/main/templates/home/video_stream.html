@@ -1,0 +1,36 @@
+{% extends "layout/base.html" %}
+{% block main_content %}
+    {% load static %}
+<div class="main-content-inner">
+                <div class="card-area">
+                    {% if messages %}
+                        <div class="span12">
+                            {% for message in messages %}
+                                <div class="alert alert-success">
+                                    {{ message|safe }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    <div class="row justify-content-md-center">
+                        <div class="col-xl-4 col-lg-6 col-md-8 mt-5">
+                            <div class="card card-bordered">
+                                <img id="vidfeed" class="card-img-top" src="{% url 'video_feed' %}" alt="Card image cap">
+                                <div class="card-body">
+
+                                    <h5 class="title">Video Feed</h5>
+                                    <p class="card-text">This is the Video Feed captured by the web camera.
+                                        And stay on this page to keep the feature ongoing.
+                                    </p>
+                                    <a href="{% url 'detected' %}">View Detection Record</a>
+                                </div>
+                            </div>
+                        </div>
+
+                </div>
+            </div>
+        </div>
+{% endblock %}
+{% block js_content %}
+    <script src="{% static  'assets/js/vendor/jquery-2.2.4.min.js' %}"></script>
+{% endblock %}

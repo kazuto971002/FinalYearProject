@@ -1,0 +1,69 @@
+{% extends "layout/base.html" %}
+{% block main_content %}
+    {% load static %}
+    <div class="main-content-inner">
+        <div class="row">
+            <div class="col-12 mt-5">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="header-title">View Detection Record</h4>
+                        {% if messages %}
+                            <div class="span12">
+                                {% for message in messages %}
+                                    <div class="alert alert-success">
+                                        {{ message|safe }}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                        <form type="get" action="." style="margin: 0">
+                            Enter Date: <input id="search_submit" type="date" name="search_box">
+                            <button type="submit" >Submit</button>
+                        </form>
+                        <div class="data-tables datatable-dark">
+                            <table id="dataTable3" class="text-center" width="100%">
+                                <thead class="text-capitalize">
+                                <tr>
+                                    <th>timestamp</th>
+                                    <th>ID</th>
+                                    <th>Image</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for det in det_list %}
+                                    <tr>
+                                        <td>{{det.time_stamp}}</td>
+                                        <td>{{det.person_name}}</td>
+            <td>
+              <img class="img-preview" src="{{ det.photo.url }}" >
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#{{ det.id }}">Click to enlarge</button>
+                <!-- Modal -->
+                <div id="{{ det.id }}" class="modal fade" role="dialog">
+                  <div class="modal-dialog modal-lg" style="text-align: center">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-body">
+                        <img src="{{ det.photo.url }}" style="margin-bottom: 5px;">
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+            </td>
+        </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Dark table end -->
+        </div>
+    </div>
+{% endblock %}
+
+{% block js_content %}
+    <script src="{% static  'assets/js/vendor/jquery-2.2.4.min.js' %}"></script>
+{% endblock %}
