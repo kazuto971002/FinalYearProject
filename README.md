@@ -14,6 +14,7 @@ In order to steup on your machine, you can follow the steps below:
 
 3. Install Python 3.x and install the required Python module
     - Install the Python and check the “Add to PATH” option if available
+    - Also, install Development for C++ using Visual Studio Build Tools
     - To install the Python module, open your command prompt and go into C:/inetpub/wwwroot/webproject directory
     - Then, type in the install_requirements.bat file and it will start to install all module requirements for the application and the server.
 
@@ -39,6 +40,8 @@ In order to steup on your machine, you can follow the steps below:
     - Go to the Default Web Site under the server and add a virtual directory.
     - Add a virtual directory for the static file and link it to the actual static file directory.
     - Add a virtual directory for the media file and link it to the actual media file directory.
+    - Navigate to Application Pools on the left hand side, select DefaultAppPool and right-click to access the advanced setting.
+    - Then, go to Identity under Process Model change to “Local System”.
 
 8. Change the settings.py file in the project
     - Open settings.py with code editor.
